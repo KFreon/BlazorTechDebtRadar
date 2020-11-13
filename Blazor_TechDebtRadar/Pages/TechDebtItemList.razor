@@ -1,0 +1,92 @@
+﻿@using System.Collections.Immutable;
+
+@inject InMemoryStorageService storage;
+@inject NavigationManager navigator;
+
+@if (!Items.Any())
+{
+    <p>No tech debt items!</p>
+    <p>Create one using the side menu. But hopefully there isn't anything to report :D</p>
+}
+else
+{
+<div class="list">
+    <!--bind creates an event handler for it (onchange by default I think), then bind:event retargets the value to a different event-->
+    <!--So instead of onChange, I now bind SearchText to oninput which is basically keydown, no onChange is present (I believe...)-->
+    <input class="searchbox" placeholder="Search..." @bind="@SearchText" @bind:event="oninput" @onkeydown="OnSearchTextChanged" />
+    <ul>
+        <li class="card addcard" style="height: 5rem" @onclick="AddNewItem">
+            <h1>+ Add new</h1>
+        </li>
+
+        @foreach (var item in Items)
+        {
+            <li class="card">
+                <div class="card-body">
+                    <h3 class="card-title">@item.Title</h3>
+                    <p class="card-subtitle">@item.Description</p>
+                    <div class="card-text">
+                        <p><strong>Estimated date of effect:</strong> @item.EstimatedDateOfIncident.ToString("yyyy-MM-dd")</p>
+                        <small><strong>Created by:</strong> @item.CreatedBy</small>
+                        <small><strong>Created on:</strong> @item.CreatedOn.ToString("yyyy-MM-dd")</small>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+
+</div>
+}
+
+
+@code {
+    private string? SearchText { get; set; }
+    private IReadOnlyCollection<InMemoryStorageItem> Items = new List<InMemoryStorageItem>();
+
+    private System.Timers.Timer searchInputTimer = new System.Timers.Timer()
+    {
+        Interval = 0.2 * 1000
+    };
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Items = storage.GetItems();
+        searchInputTimer.Elapsed += (_, _) =>
+        {
+            Console.WriteLine($"Searching for {SearchText}");
+            searchInputTimer.Stop();
+            Console.Out.Flush();
+
+            PerformSearch();
+        };
+    }
+
+    private void PerformSearch()
+    {
+        var allItems = storage.GetItems();
+        if (SearchText is null)
+        {
+            Items = allItems;
+            return;
+        }
+
+        Items = allItems
+            .Where(item => item.Title.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+                || item.Description.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+            ).ToImmutableArray();
+
+        InvokeAsync(() => StateHasChanged());
+    }
+
+    public void OnSearchTextChanged(KeyboardEventArgs arg)
+    {
+        searchInputTimer.Stop();
+        searchInputTimer.Start();
+    }
+
+    public void AddNewItem()
+    {
+        navigator.NavigateTo("/new-item");
+    }
+} 

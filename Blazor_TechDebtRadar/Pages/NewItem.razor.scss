@@ -1,0 +1,42 @@
+﻿.new-item {
+    background-color: #808080ad;
+    box-shadow: #808080ad 0 0 5px 10px;
+    color: whitesmoke;
+    max-width: 50rem;
+    margin: auto;
+    padding: 1rem;
+
+    .fields {
+        display: flex;
+        flex-direction: column;
+
+        .center-aligned {
+            text-align: center;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            font-size: 1rem;
+        }
+
+        .create-button {
+            margin-top: 2rem;
+            width: 5rem;
+            background-color: purple;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            align-self: flex-end;
+            padding: 0.2rem 0.5rem;
+            border: none;
+            box-shadow: darken(purple, 0.2) 2px 2px 5px;
+            transition: all 0.2s;
+
+            &:hover {
+                box-shadow: darken(purple, 0.4) 2px 2px 5px 2px;
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+﻿@inject InMemoryStorageService storage;
+@page "/"
+
+<div class="home">
+    <div class="intro">
+        <h1>This is the Tech Debt Radar!</h1>
+
+        <p>This is a place where the team can track items in the tech world which may affect us or our clients in the future. </p>
+        <p>They may need addressing immediately, or in the future.</p>
+
+    </div>
+
+    <TechDebtItemList />
+
+</div>
