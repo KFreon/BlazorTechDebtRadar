@@ -38,5 +38,15 @@
                 box-shadow: darken(purple, 0.4) 2px 2px 5px 2px;
             }
         }
+
+        ::deep .validation-errors {
+            margin-top: 1rem;
+            background-color: transparentize(red, 0.5);
+            box-shadow: transparentize(red, 0.5) 0 0 5px 10px;
+        }
+
+        ::deep .validation-message {
+            color: navajowhite;
+        }
     }
 }
