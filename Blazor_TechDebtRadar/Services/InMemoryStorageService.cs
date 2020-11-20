@@ -32,8 +32,8 @@ namespace Blazor_TechDebtRadar.Services
             }),
             new InMemoryStorageItem(new TechDebtItem
             {
-                Title="Apple is garbage",
-                Description="Stop making excuses, you know they are.",
+                Title="Apple broke Cordova",
+                Description="I don't have a mac to fix it :(",
                 EstimatedDateOfIncident=DateTimeOffset.Now.AddDays(20)
             }),
         };
