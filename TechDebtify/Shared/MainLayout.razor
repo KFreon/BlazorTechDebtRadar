@@ -1,0 +1,19 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager navigator; 
+
+<div class="home-icon" @onclick="GoHome">
+    <img src="img/Looogoo.png" width="64" height="64" />
+</div>
+
+<div class="main">
+    <div class="content px-4" style="backdrop-filter: blur(2px); height: 100%;">
+        @Body
+    </div>
+</div>
+
+@code {
+    private void GoHome()
+    {
+        navigator.NavigateTo("/");
+    }
+} 

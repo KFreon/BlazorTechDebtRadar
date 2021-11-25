@@ -1,0 +1,19 @@
+﻿<li class="card">
+    <div class="card-body">
+        <h3 class="card-title">@Title</h3>
+        <p class="card-subtitle">@Description</p>
+        <div class="card-text">
+            <p><strong>Estimated date of effect:</strong> @EstimatedDateOfIncident.ToString("yyyy-MM-dd")</p>
+            <small><strong>Created by:</strong> @CreatedBy</small>
+            <small><strong>Created on:</strong> @CreatedOn.ToString("yyyy-MM-dd")</small>
+        </div>
+    </div>
+</li>
+
+@code {
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? Description { get; set; }
+    [Parameter] public DateTimeOffset EstimatedDateOfIncident { get; set; }
+    [Parameter] public DateTimeOffset CreatedOn { get; set; }
+    [Parameter] public string? CreatedBy { get; set; }
+}

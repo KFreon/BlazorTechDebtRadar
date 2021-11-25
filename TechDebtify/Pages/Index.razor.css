@@ -1,0 +1,7 @@
+.home {
+  height: 100%; }
+  .home .intro {
+    background-color: #808080ad;
+    text-align: center;
+    color: whitesmoke;
+    box-shadow: #808080ad 0 0 5px 10px; }
