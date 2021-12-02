@@ -8,29 +8,41 @@
     <!--bind creates an event handler for it (onchange by default I think), then bind:event retargets the value to a different event-->
     <!--So instead of onChange, I now bind SearchText to oninput which is basically keydown, no onChange is present (I believe...)-->
     <input class="searchbox" placeholder="Search..." @bind="@SearchText" @bind:event="oninput" @onkeydown="OnSearchTextChanged" />
+    <div class="card addcard" style="height: 5rem" @onclick="AddNewItem">
+        <h1>+ Add new</h1>
+    </div>
     @if (!Items.Any())
     {
         <div class="no-items">
             <p>No tech debt items!</p>
-            <p>Create one using the side menu. But hopefully there isn't anything to report :D</p>
+            <p>Create one! But hopefully there isn't anything to report :D</p>
         </div>
     }
     else
     {
-        <ul>
-            <li class="card addcard" style="height: 5rem" @onclick="AddNewItem">
-                <h1>+ Add new</h1>
-            </li>
-
-            @foreach (var item in Items)
-            {
-                <TechDebtListItemItem Title="@item.Title"
-                                      Description="@item.Description"
-                                      EstimatedDateOfIncident="@item.EstimatedDateOfIncident"
-                                      CreatedBy="@item.CreatedBy"
-                                      CreatedOn="@item.CreatedOn" />
-            }
-        </ul>
+        <div class="master-detail">
+            <ul class="master">
+                @foreach (var item in Items)
+                {
+                    <li class="card" @onclick="() => SetSelected(item)">
+                        <TechDebtListItemItem Id="@item.Id"
+                                  Title="@item.Title"
+                                  Description="@item.Description"
+                                  EstimatedDateOfIncident="@item.EstimatedDateOfIncident"
+                                  CreatedBy="@item.CreatedBy"
+                                  CreatedOn="@item.CreatedOn" />
+                    </li>
+                }
+            </ul>
+            <div class="detail">
+                <ItemDetail Item="@SelectedItem" />
+            </div>
+        </div>
     }
-
 </div>
+
+@code {
+    public InMemoryStorageItem? SelectedItem { get; set; }
+
+    public void SetSelected(InMemoryStorageItem item) => SelectedItem = item;
+}

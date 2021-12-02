@@ -23,12 +23,6 @@
     border-radius: 5px;
     box-shadow: purple 0 0 5px 1px;
     padding: 0.4rem; }
-  .list ul {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    align-items: center; }
   .list .addcard {
     align-items: center;
     justify-content: center;
@@ -37,3 +31,15 @@
     .list .addcard:hover {
       box-shadow: purple 5px 5px 10px 5px;
       cursor: pointer; }
+  .list .master-detail {
+    display: flex;
+    width: 100%; }
+    .list .master-detail .master {
+      flex: 1;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      align-items: center; }
+    .list .master-detail .detail {
+      flex: 10; }

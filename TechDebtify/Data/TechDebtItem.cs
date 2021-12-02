@@ -2,8 +2,19 @@
 
 namespace TechDebtify.Data;
 
+public enum TechDebtItemStatus
+{
+    New = 1,
+    Existing,
+    Deleted
+}
+
 public class TechDebtItem
 {
+    public int Id { get; set; }
+
+    public TechDebtItemStatus Status { get; set; } = TechDebtItemStatus.New;
+
     [Required]
     [StringLength(50, MinimumLength = 10, ErrorMessage = "Title should be between 10-50")]
     public string Title { get; set; } = "";

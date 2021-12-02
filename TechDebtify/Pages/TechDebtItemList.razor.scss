@@ -29,14 +29,6 @@
         padding: 0.4rem;
     }
 
-    ul {
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        row-gap: 1rem;
-        align-items: center;
-    }
-
     .addcard {
         align-items: center;
         justify-content: center;
@@ -46,6 +38,24 @@
         &:hover {
             box-shadow: purple 5px 5px 10px 5px;
             cursor: pointer;
+        }
+    }
+
+    .master-detail {
+        display: flex;
+        width: 100%;
+
+        .master {
+            flex: 1;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+            align-items: center;
+        }
+
+        .detail {
+            flex: 10;
         }
     }
 }

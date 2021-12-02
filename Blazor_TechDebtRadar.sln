@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1.Shared", "Blazor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechDebtify", "TechDebtify\TechDebtify.csproj", "{EEC00317-6902-403F-8B5B-FF056671341A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEFAULTTESTAPP", "DEFAULTTESTAPP\DEFAULTTESTAPP.csproj", "{2615BD19-82E8-486B-B9EB-1ADCA3075EB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EEC00317-6902-403F-8B5B-FF056671341A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEC00317-6902-403F-8B5B-FF056671341A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEC00317-6902-403F-8B5B-FF056671341A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2615BD19-82E8-486B-B9EB-1ADCA3075EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2615BD19-82E8-486B-B9EB-1ADCA3075EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2615BD19-82E8-486B-B9EB-1ADCA3075EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2615BD19-82E8-486B-B9EB-1ADCA3075EB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

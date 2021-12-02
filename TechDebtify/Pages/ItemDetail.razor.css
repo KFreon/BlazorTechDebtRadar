@@ -1,20 +1,20 @@
-.new-item {
+.item-detail {
   background-color: #808080ad;
   box-shadow: #808080ad 0 0 5px 10px;
   color: whitesmoke;
   max-width: 50rem;
   margin: auto;
   padding: 1rem; }
-  .new-item .fields {
+  .item-detail .fields {
     display: flex;
     flex-direction: column; }
-    .new-item .fields .center-aligned {
+    .item-detail .fields .center-aligned {
       text-align: center; }
-    .new-item .fields label {
+    .item-detail .fields label {
       display: flex;
       flex-direction: column;
       font-size: 1rem; }
-    .new-item .fields .create-button {
+    .item-detail .fields .create-button {
       margin-top: 2rem;
       width: 5rem;
       background-color: purple;
@@ -27,11 +27,11 @@
       border: none;
       box-shadow: #7f007f 2px 2px 5px;
       transition: all 0.2s; }
-      .new-item .fields .create-button:hover {
+      .item-detail .fields .create-button:hover {
         box-shadow: #7e007e 2px 2px 5px 2px; }
-    .new-item .fields ::deep .validation-errors {
+    .item-detail .fields ::deep .validation-errors {
       margin-top: 1rem;
       background-color: rgba(255, 0, 0, 0.5);
       box-shadow: rgba(255, 0, 0, 0.5) 0 0 5px 10px; }
-    .new-item .fields ::deep .validation-message {
+    .item-detail .fields ::deep .validation-message {
       color: navajowhite; }

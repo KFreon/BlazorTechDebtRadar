@@ -1,0 +1,61 @@
+﻿@using TechDebtify.Data
+@using TechDebtify.Services
+
+@inject InMemoryStorageService storage;
+@inject NavigationManager navigation;
+
+<div class="@(Item == null ? "item-detail closed" : "item-detail")">
+    @if (Item != null)
+    {
+        <h1 class="center-aligned">@(Item.Status == TechDebtItemStatus.New ? "New " : "")Tech Debt Item</h1>
+        <div>
+            @if (Item.Status == TechDebtItemStatus.New)
+            {
+                <p class="center-aligned">Enter a new Tech Debt Item</p>
+            }
+            <EditForm Model="@Item" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="fields">
+                    <label>
+                        Title
+                        <InputText @bind-Value="Item!.Title" placeholder="Enter the title..." />
+                    </label>
+                    <label>
+                        Description
+                        <InputText @bind-Value="Item.Description" placeholder="How bout dat description?" />
+                    </label>
+                    <label>
+                        Estimated date of effect
+                        <InputDate @bind-Value="Item.EstimatedDateOfIncident" DisplayName="Estimated Date of Effect" />
+                    </label>
+                    <ValidationSummary />
+                    <button class="create-button" type="submit">@CreateText</button>
+                </div>
+            </EditForm>
+        </div>
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public TechDebtItem? Item { get; set; }
+
+    public string CreateText => Item?.Status == TechDebtItemStatus.Existing ? "Save" : "Create";
+
+    public void HandleValidSubmit()
+    {
+        if (Item != null)
+        {
+            if (Item.Status == TechDebtItemStatus.Existing)
+            {
+                storage.Update(new InMemoryStorageItem(Item));
+            }
+            else
+            {
+                storage.Add(new InMemoryStorageItem(Item));
+            }
+            navigation.NavigateTo("/");
+        }
+    }
+}
